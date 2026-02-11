@@ -357,7 +357,8 @@
                 left: 50%;
                 right: auto;
                 transform: translateX(-50%);
-                bottom: 20px;
+                bottom: 50px;
+                /* Higher up (was 20px) */
                 padding: 6px;
                 gap: 12px;
             }
@@ -377,7 +378,8 @@
 
             .swiper-slide {
                 width: 280px;
-                height: 440px;
+                height: 400px;
+                /* Significantly shorter (was 440px) */
             }
 
             .header {
@@ -582,13 +584,14 @@
                 slidesPerView: "auto", // Respect CSS width for card look
                 initialSlide: 0,
                 spaceBetween: 40, // More space on desktop
-                speed: 500,
+                speed: 300, // Faster transition (was 500)
                 loop: false, // NO loop
 
                 // Touch Settings
-                touchRatio: 1,
+                touchRatio: 1.5, // More sensitive on mobile
                 resistance: true, // Resistance at edges
-                longSwipes: true,
+                longSwipes: false, // Prevent long slow swipes
+                longSwipesRatio: 0.1, // Trigger slide faster
 
                 mousewheel: {
                     invert: false,
