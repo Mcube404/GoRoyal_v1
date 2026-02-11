@@ -758,7 +758,7 @@
             'electronics': [
                 { name: 'Television', img: 'Images/tv.png' },
                 { name: 'Mobile', img: 'Images/phone.png' },
-                { name: 'Laptop', img: 'Images/laptop.png' },
+                { name: 'Laptop', img: 'Images/laptop1.png' },
                 { name: 'Gaming', img: 'Images/gaming.png' },
                 { name: 'Camera', img: 'Images/camera.png' },
                 { name: 'Headphones', img: 'Images/headphone.png' },
@@ -1008,6 +1008,7 @@
                     sidebarList.querySelectorAll('.cat').forEach(x => x.classList.remove('active'));
                     cat.classList.add('active');
                     currentCatId = cat.dataset.id;
+                    sessionStorage.setItem('activeCategory', currentCatId);
                     searchInput.value = ''; // Clear search on cat switch
 
                     // On mobile, close sidebar after selection
@@ -1243,13 +1244,3 @@
 
 
 </html>
-
-
-
-
-
-
-
-
-
-

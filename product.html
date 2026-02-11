@@ -431,7 +431,9 @@
             <div style="display: flex; align-items: center; gap: 12px;">
                 <h1 id="pageTitle">Products</h1>
             </div>
-            <div style="width:40px"></div>
+            <a href="index.html" class="logo-link" style="display:flex; align-items:center; text-decoration:none;">
+                <img src="Images/logo.png" alt="Go Royal" style="height: 40px;">
+            </a>
         </header>
 
         <!-- Tabs Control -->
@@ -485,6 +487,292 @@
                 { key: 'soundbar', label: 'Sound Bar' }
             ]
             // Add other categories here if needed
+        };
+
+        // Product Database for Custom Images and Links per Category
+        // Users can add their own affiliate links and specific images here.
+        const productDatabase = {
+            // --- WATCHES ---
+            "Smart Watch": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Apple Watch Ultra', desc: 'Rugged & Capable', link: 'https://www.apple.com/watch-ultra/', img: 'Images/smartw.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Samsung Galaxy Watch', desc: 'Daily Driver', link: 'https://www.samsung.com/us/watches/', img: 'Images/smartw.png' }
+            ],
+            "Analog Watch": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Rolex Submariner', desc: 'Timeless Luxury', link: '#', img: 'Images/analogw.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Seiko 5 Sports', desc: 'Best Value Automatic', link: '#', img: 'Images/analogw.png' }
+            ],
+            "Digital Watch": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'G-Shock Mudmaster', desc: 'Indestructible', link: '#', img: 'Images/digitalw.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Casio Vintage', desc: 'Retro Style', link: '#', img: 'Images/digitalw.png' }
+            ],
+            "Digi Log Watch": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Tissot T-Touch', desc: 'Hybrid Smart', link: '#', img: 'Images/digilogw.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Fastrack Digi-Analog', desc: 'Youth Favorite', link: '#', img: 'Images/digilogw.png' }
+            ],
+            "Vintage Series": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Omega Speedmaster', desc: 'Moonwatch', link: '#', img: 'Images/vintagew.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'HMT Pilot', desc: 'Classic Indian', link: '#', img: 'Images/vintagew.png' }
+            ],
+
+            // --- AUTOMOBILES ---
+            "Bikes": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Royal Enfield Classic', desc: 'Timeless Design', link: 'https://www.royalenfield.com/', img: 'Images/bike.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Yamaha R15', desc: 'Racing DNA', link: 'https://www.yamaha-motor-india.com/', img: 'Images/bike.png' }
+            ],
+            "Cars": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'BMW 3 Series', desc: 'Driving Pleasure', link: '#', img: 'Images/car.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Hyundai Creta', desc: 'Family Favorite', link: '#', img: 'Images/car.png' }
+            ],
+            "Helmets": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'AGV Pista GP', desc: 'Track Ready', link: '#', img: 'Images/helmet.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Studds Ninja', desc: 'Daily Protection', link: '#', img: 'Images/helmet.png' }
+            ],
+            "Bike Accessories": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Akrapovic Exhaust', desc: 'Performance Sound', link: '#', img: 'Images/bikeacc.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Mobile Holder', desc: 'Navigation Ready', link: '#', img: 'Images/bikeacc.png' }
+            ],
+            "Car Accessories": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Dash Cam 4K', desc: 'Safety First', link: '#', img: 'Images/caracc.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Car Vacuum', desc: 'Keep Clean', link: '#', img: 'Images/caracc.png' }
+            ],
+            "EV": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Tesla Model 3', desc: 'Future Drive', link: '#', img: 'Images/ev.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Tata Nexon EV', desc: 'Reliable Choice', link: '#', img: 'Images/ev.png' }
+            ],
+
+            // --- ELECTRONICS ---
+            "Television": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'LG OLED G3', desc: 'Perfect Blacks', link: '#', img: 'Images/tv.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Sony Bravia XR', desc: 'Cinema Experience', link: '#', img: 'Images/tv.png' }
+            ],
+            "Mobile": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'iPhone 15 Pro', desc: 'Titanium Design', link: '#', img: 'Images/phone.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Samsung S24 Ultra', desc: 'AI Powerhouse', link: '#', img: 'Images/phone.png' }
+            ],
+            "Laptop": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'MacBook Pro M3', desc: 'Pro Performance', link: '#', img: 'Images/laptop1.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Dell XPS 15', desc: 'Windows Best', link: '#', img: 'Images/laptop1.png' }
+            ],
+            "Gaming": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'PlayStation 5', desc: 'Next Gen Play', link: '#', img: 'Images/gaming.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Xbox Series X', desc: 'Power Your Dreams', link: '#', img: 'Images/gaming.png' }
+            ],
+            "Camera": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Sony A7 IV', desc: 'Hybrid Master', link: '#', img: 'Images/camera.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Fujifilm X-T5', desc: 'Retro Soul', link: '#', img: 'Images/camera.png' }
+            ],
+            "Headphones": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Sony WH-1000XM5', desc: 'Silence the World', link: '#', img: 'Images/headphone.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'AirPods Max', desc: 'computational Audio', link: '#', img: 'Images/headphone.png' }
+            ],
+            "Monitor": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Samsung Odyssey G9', desc: 'Ultrawide Immersion', link: '#', img: 'Images/monitor.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'LG UltraGear', desc: 'Fast IPS', link: '#', img: 'Images/monitor.png' }
+            ],
+            "Speaker": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Sonos Era 300', desc: 'Spacial Audio', link: '#', img: 'Images/speakers.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'JBL Charge 5', desc: 'Portable Party', link: '#', img: 'Images/speakers.png' }
+            ],
+
+            // --- HOME APPLIANCES ---
+            "Refrigerator": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Samsung Bespoke', desc: 'Custom Design', link: '#', img: 'Images/fridge.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'LG Instaview', desc: 'Knock Twice', link: '#', img: 'Images/fridge.png' }
+            ],
+            "AC": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Daikin Inverter', desc: 'Efficient Cooling', link: '#', img: 'Images/ac.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Voltas Split AC', desc: 'Robust Cooling', link: '#', img: 'Images/ac.png' }
+            ],
+            "Washing Machine": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Bosch Front Load', desc: 'Gentle Wash', link: '#', img: 'Images/washingmachine.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'LG Top Load', desc: 'Direct Drive', link: '#', img: 'Images/washingmachine.png' }
+            ],
+            "Dish Washer": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Bosch Series 6', desc: 'Hygiene Wash', link: '#', img: 'Images/dishwasher.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'IFB Neptune', desc: 'Indian Kitchen Ready', link: '#', img: 'Images/dishwasher.png' }
+            ],
+            "Air Fryer": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Philips AirFryer XXL', desc: 'Fat Removal', link: '#', img: 'Images/airfyer.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Ninja Foodi', desc: 'Multi-Cooker', link: '#', img: 'Images/airfyer.png' }
+            ],
+            "Kitchen Supplies": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Wonderchef Set', desc: 'Color Your Kitchen', link: '#', img: 'Images/kitchensupply.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Prestige Cooke', desc: 'Durable Build', link: '#', img: 'Images/kitchensupply.png' }
+            ],
+            "Air Purifier": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Dyson Purifier Cool', desc: 'Detects & Destroys', link: '#', img: 'Images/airpurifier.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Philips AC1215', desc: 'NightSense Mode', link: '#', img: 'Images/airpurifier.png' }
+            ],
+
+            // --- BAGS & FOOTWEAR ---
+            "Womens Footwear": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Nike Air Max', desc: 'Comfort & Style', link: '#', img: 'Images/womensfootwear.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Adidas Ultraboost', desc: 'Energy Return', link: '#', img: 'Images/womensfootwear.png' }
+            ],
+            "Mens Footwear": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Jordan Retro', desc: 'Iconic Style', link: '#', img: 'Images/mensfootwear.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Puma RS-X', desc: 'Bold Design', link: '#', img: 'Images/mensfootwear.png' }
+            ],
+            "Kids Footwear": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Crocs Classic', desc: 'Easy Wear', link: '#', img: 'Images/kidsfootwear.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Skechers Light-Up', desc: 'Fun Steps', link: '#', img: 'Images/kidsfootwear.png' }
+            ],
+            "Women Bags": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Michael Kors Tote', desc: 'Luxury Daily', link: '#', img: 'Images/womensbag.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Lavie Handbag', desc: 'Stylish & Spacious', link: '#', img: 'Images/womensbag.png' }
+            ],
+            "Men Bags": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Samsonite Backpack', desc: 'Business Class', link: '#', img: 'Images/mensbag.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Wildcraft Rucksack', desc: 'Adventure Ready', link: '#', img: 'Images/mensbag.png' }
+            ],
+            "Travel Bags": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'American Tourister', desc: 'Hard Shell', link: '#', img: 'Images/travelbag.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Safari Trolley', desc: 'Lightweight', link: '#', img: 'Images/travelbag.png' }
+            ],
+
+            // --- HOME DECOR ---
+            "Wood Furniture": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Teak Wood Bed', desc: 'Solid Construction', link: '#', img: 'Images/furniture.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Sheesham Table', desc: 'Elegant Finish', link: '#', img: 'Images/furniture.png' }
+            ],
+            "Kitchen Storage": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Tupperware Set', desc: 'Airtight Freshness', link: '#', img: 'Images/kitchenstorage.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Milton Containers', desc: 'Steel Durability', link: '#', img: 'Images/kitchenstorage.png' }
+            ],
+            "Home Textile": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Bombay Dyeing', desc: 'Bedsheets & More', link: '#', img: 'Images/hometextile.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Spaces Towels', desc: 'Super Soft', link: '#', img: 'Images/hometextile.png' }
+            ],
+            "Bedroom Accessories": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Wakefit Pillow', desc: 'Memory Foam', link: '#', img: 'Images/bedroom.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Philips Smart Light', desc: 'Mood Lighting', link: '#', img: 'Images/bedroom.png' }
+            ],
+
+            // --- FITNESS ---
+            "Treadmill": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'NordicTrack', desc: 'Interactive Training', link: '#', img: 'Images/treadmill.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'PowerMax Fitness', desc: 'Home Cardio', link: '#', img: 'Images/treadmill.png' }
+            ],
+            "Fitness Bike": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Peloton Bike', desc: 'Live Classes', link: '#', img: 'Images/fitnessbike.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Reach Air Bike', desc: 'Full Body Workout', link: '#', img: 'Images/fitnessbike.png' }
+            ],
+            "Walking Pods": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'WalkingPad P1', desc: 'Foldable Design', link: '#', img: 'Images/walkingpad.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Sparnod Walk', desc: 'Under Desk', link: '#', img: 'Images/walkingpad.png' }
+            ],
+            "Weights": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Bowflex SelectTech', desc: 'Adjustable Dumbbells', link: '#', img: 'Images/weights.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Kore PVC Set', desc: 'Beginner Friendly', link: '#', img: 'Images/weights.png' }
+            ],
+            "Home Gym": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Total Gym', desc: 'All-in-One', link: '#', img: 'Images/homegym.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Hashtag Fitness', desc: 'Multistation', link: '#', img: 'Images/homegym.png' }
+            ],
+            "Gym Accessories": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Nike Gym Gloves', desc: 'Better Grip', link: '#', img: 'Images/gymacc.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Nivia Yoga Mat', desc: 'Anti-Slip', link: '#', img: 'Images/gymacc.png' }
+            ],
+
+            // --- SPORTS ---
+            "Cricket": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'SS Ton Bat', desc: 'English Willow', link: '#', img: 'Images/cricket.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'SG Ball', desc: 'Tournament Grade', link: '#', img: 'Images/cricket.png' }
+            ],
+            "Football": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Adidas Al Rihla', desc: 'Official Match Ball', link: '#', img: 'Images/football.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Nivia Shining Star', desc: 'Training Ball', link: '#', img: 'Images/football.png' }
+            ],
+            "Badminton": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Yonex Astrox', desc: 'Smash Power', link: '#', img: 'Images/badminton.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Li-Ning G-Force', desc: 'Lightweight', link: '#', img: 'Images/badminton.png' }
+            ],
+            "Swimming": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Speedo Goggles', desc: 'Anti-Fog', link: '#', img: 'Images/swimming.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Nabaiji Cap', desc: 'Silicone Fit', link: '#', img: 'Images/swimming.png' }
+            ],
+            "Table Tennis": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Stag 4 Star', desc: 'Pro Racket', link: '#', img: 'Images/tabletennis.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'GKI Offensive', desc: 'Spin Control', link: '#', img: 'Images/tabletennis.png' }
+            ],
+            "Boxing": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Everlast Gloves', desc: 'Heavy Bag Training', link: '#', img: 'Images/boxing.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'USI Pro', desc: 'Competition Grade', link: '#', img: 'Images/boxing.png' }
+            ],
+
+            // --- KIDS ---
+            "Girls Clothing": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'H&M Kids Dress', desc: 'Party Wear', link: '#', img: 'https://images.unsplash.com/photo-1621452773781-0f992fd1f5cb?w=400&q=80' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Max Fashion', desc: 'Daily Comfort', link: '#', img: 'https://images.unsplash.com/photo-1621452773781-0f992fd1f5cb?w=400&q=80' }
+            ],
+            "Boys Clothing": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Zara Boys', desc: 'Trendy Styles', link: '#', img: 'https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=400&q=80' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Allen Solly Junior', desc: 'Smart Casuals', link: '#', img: 'https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=400&q=80' }
+            ],
+            "Baby Care": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Pampers Premium', desc: 'Soft & Dry', link: '#', img: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400&q=80' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Johnson\'s Baby', desc: 'Gentle Care', link: '#', img: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400&q=80' }
+            ],
+            "Kids Toys": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'LEGO City', desc: 'Creative Build', link: '#', img: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&q=80' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Hot Wheels', desc: 'Speed Action', link: '#', img: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&q=80' }
+            ],
+
+            // --- PETS ---
+            "Dog Food": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Royal Canin', desc: 'Breed Health', link: '#', img: 'Images/dog.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Pedigree', desc: 'Complete Nutrition', link: '#', img: 'Images/dog.png' }
+            ],
+            "Cat Food": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Whiskas', desc: 'Tasty Mix', link: '#', img: 'Images/cat.png' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Me-O', desc: 'Fish Flavour', link: '#', img: 'Images/cat.png' }
+            ],
+            "Birds": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Vitapol', desc: 'Premium Seed', link: '#', img: 'https://images.unsplash.com/photo-1444464666168-49d633b86797?w=400&q=80' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Boltz', desc: 'Healthy Mix', link: '#', img: 'https://images.unsplash.com/photo-1444464666168-49d633b86797?w=400&q=80' }
+            ],
+            "Aquarium": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Tetra Bits', desc: 'Fish Food', link: '#', img: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=400&q=80' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Sobo Filter', desc: 'Clean Water', link: '#', img: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=400&q=80' }
+            ],
+
+            // --- CLOTHING (MEN/WOMEN shared names, need context? No, index.html just sends "Top Wear")
+            // Issue: "Top Wear" exists in both Men and Women. 
+            // The current logic in product.html just uses the sub name (e.g. "Top Wear").
+            // To differentiate, we might need to handle this. But for now I will add generic entries.
+            // A better fix would be if index.html sent "Men Top Wear" but it sends "Top Wear".
+            // However, the `sub` param is just the name. 
+            // I'll add one entry. If user wants specific gendered products they might need to update index.html to send unique names.
+            // Wait, let's see. logic uses `sub`.
+
+            "Top Wear": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Zara Collection', desc: 'Trending Now', link: '#', img: 'https://images.unsplash.com/photo-1550246140-5119ae4790b8?w=400&q=80' }, // Defaulting to one img
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Levis', desc: 'Classic Fit', link: '#', img: 'https://images.unsplash.com/photo-1550246140-5119ae4790b8?w=400&q=80' }
+            ],
+            "Bottom Wear": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Levi\'s Jeans', desc: 'Original 501', link: '#', img: 'https://images.unsplash.com/photo-1475178626620-a4d074967329?w=400&q=80' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Pepe Jeans', desc: 'London Style', link: '#', img: 'https://images.unsplash.com/photo-1475178626620-a4d074967329?w=400&q=80' }
+            ],
+            "Inner Wear": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Calvin Klein', desc: 'Premium Comfort', link: '#', img: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&q=80' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Jockey', desc: 'Daily Essentials', link: '#', img: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&q=80' }
+            ],
+            "Ethnic Wear": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Manyavar', desc: 'Celebration Ready', link: '#', img: 'https://images.unsplash.com/photo-1507679799987-9755eb1e1c17?w=400&q=80' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Biba', desc: 'Elegant Styles', link: '#', img: 'https://images.unsplash.com/photo-1507679799987-9755eb1e1c17?w=400&q=80' }
+            ],
+            "Sports Wear": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Nike Pro', desc: 'Athletic Fit', link: '#', img: 'https://images.unsplash.com/photo-1518459031867-a89b944bffe4?w=400&q=80' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Puma Active', desc: 'Gym Ready', link: '#', img: 'https://images.unsplash.com/photo-1518459031867-a89b944bffe4?w=400&q=80' }
+            ],
+            "Winter Wear": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Columbia Jacket', desc: 'Thermal Warmth', link: '#', img: 'https://images.unsplash.com/photo-1591559489278-654cb2960f25?w=400&q=80' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Decathlon Quechua', desc: 'Fleece Comfort', link: '#', img: 'https://images.unsplash.com/photo-1591559489278-654cb2960f25?w=400&q=80' }
+            ],
+            "Accessories": [
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: 'Ray-Ban', desc: 'Iconic Shades', link: '#', img: 'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=400&q=80' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: 'Fastrack', desc: 'Trendy Add-ons', link: '#', img: 'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=400&q=80' }
+            ]
         };
 
         let currentVariant = null;
@@ -546,7 +834,7 @@
             renderProducts(sub, img, currentVariant);
         }
 
-        function renderProducts(sub, subImg, variantKey) {
+        function renderProducts(sub, defaultImg, variantKey) {
             const holder = document.getElementById('productsHolder');
 
             let displayName = sub;
@@ -556,21 +844,45 @@
                 displayName = `${vLabel} ${sub}`;
             }
 
-            // STRICTLY 2 Products Data
-            // User can replace the '#' with their actual affiliate/product links later
-            const rawProducts = [
-                { id: 0, type: 'sponsored', label: 'Sponsored', name: `${displayName} - Premium`, desc: 'Highest Quality • Verified', link: '#' },
-                { id: 1, type: 'top-rated', label: 'Top Rated', name: `${displayName} - Best Seller`, desc: 'Most Loved • 5 Star', link: '#' }
-            ];
+            let displayProducts = [];
 
-            // STRICTLY 2 Products - No Duplicates, No Loop
-            let displayProducts = rawProducts;
+            // 1. Check if we have specific data in productDatabase
+            //    Note: This lookup is simple sub-name based. 
+            //    If we want variant-specific overrides, we'd need a nested structure or key like "Laptop-gaming".
+            //    For now, let's keep it simple: if database has entry for this sub, use it.
+            if (productDatabase[sub]) {
+                displayProducts = productDatabase[sub];
+            } else {
+                // 2. Fallback to Generic Generation
+                // STRICTLY 2 Products Data
+                const rawProducts = [{
+                    id: 0,
+                    type: 'sponsored',
+                    label: 'Sponsored',
+                    name: `${displayName} - Premium`,
+                    desc: 'Highest Quality • Verified',
+                    link: '#', // Default link
+                    img: defaultImg // Use the passed image (url param)
+                }, {
+                    id: 1,
+                    type: 'top-rated',
+                    label: 'Top Rated',
+                    name: `${displayName} - Best Seller`,
+                    desc: 'Most Loved • 5 Star',
+                    link: '#', // Default link
+                    img: defaultImg // Use the passed image (url param)
+                }];
+                displayProducts = rawProducts;
+            }
 
             let html = '';
             displayProducts.forEach((p, i) => {
+                // Allow database items to optionally omit img and fall back to default
+                const productImg = p.img || defaultImg;
+
                 html += `
-                <div class="swiper-slide" data-real-index="${p.id}">
-                    <div class="slide-image" style="background-image: url('${subImg}');">
+                <div class="swiper-slide" data-real-index="${p.id || i}">
+                    <div class="slide-image" style="background-image: url('${productImg}');">
                          <div class="badge ${p.type}" style="top:16px; left:16px; position:absolute; 
                             background: rgba(0,0,0,0.6); padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; 
                             color: ${p.type === 'sponsored' ? '#ffd700' : '#4ade80'}; border: 1px solid currentColor;">
@@ -687,6 +999,4 @@
     </script>
 </body>
 
-
 </html>
-
