@@ -449,9 +449,10 @@
             const holder = document.getElementById('productsHolder');
 
             // STRICTLY 2 Products Data
+            // User can replace the '#' with their actual affiliate/product links later
             const rawProducts = [
-                { id: 0, type: 'sponsored', label: 'Sponsored', name: `${sub} - Premium`, price: '₹' + (Math.floor(Math.random() * 5000) + 4000), desc: 'Highest Quality • Verified' },
-                { id: 1, type: 'top-rated', label: 'Top Rated', name: `${sub} - Best Seller`, price: '₹' + (Math.floor(Math.random() * 3000) + 2000), desc: 'Most Loved • 5 Star' }
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: `${sub} - Premium`, desc: 'Highest Quality • Verified', link: '#' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: `${sub} - Best Seller`, desc: 'Most Loved • 5 Star', link: '#' }
             ];
 
             // STRICTLY 2 Products - No Duplicates, No Loop
@@ -473,11 +474,10 @@
                         <div>
                             <div class="title" style="font-size:1.8rem; margin-bottom: 8px; font-weight:800; line-height:1.2">${p.name}</div>
                             <div class="meta" style="color:var(--text-secondary); margin-bottom: 16px; font-size:1rem;">${p.desc}</div>
-                             <div class="price-tag" style="color:var(--accent); font-weight:900; font-size:2rem; transition: color 0.5s ease;">${p.price}</div>
                         </div>
-                        <button class="btn-add" onclick="addToCart('${p.name.replace(/'/g, "\\'")}')">
-                            <i class="ri-shopping-cart-2-fill"></i> Shop Now
-                        </button>
+                        <a href="${p.link}" target="_blank" class="btn-add" style="text-decoration:none;">
+                            <i class="ri-shopping-bag-3-fill"></i> Shop Now
+                        </a>
                     </div>
                 </div>`;
             });
@@ -557,33 +557,6 @@
             }
         }
 
-        function addToCart(name) {
-            const toast = document.createElement('div');
-            toast.style.cssText = `
-                position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
-                background: var(--card-bg); padding: 16px 32px; border-radius: 50px;
-                border: var(--glass-border); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-                box-shadow: 0 20px 50px rgba(0,0,0,0.5); z-index: 2000;
-                display: flex; align-items: center; color: var(--text-primary); font-family: 'Outfit', sans-serif;
-                white-space: nowrap; animation: fadeInUp 0.4s ease forwards;
-            `;
-            toast.innerHTML = `<i class="ri-checkbox-circle-fill" style="color:var(--accent); margin-right:12px; font-size:1.4rem"></i> <span style="font-weight:600; font-size:1rem">${name}</span> added`;
-
-            document.body.appendChild(toast);
-            if (navigator.vibrate) navigator.vibrate(50);
-
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translate(-50%, 20px)';
-                setTimeout(() => toast.remove(), 300);
-            }, 2000);
-        }
-
-        // Add Keyframe for Toast logic
-        const style = document.createElement('style');
-        style.innerHTML = `@keyframes fadeInUp { from { opacity:0; transform:translate(-50%, 40px); } to { opacity:1; transform:translate(-50%, 0); } }`;
-        document.head.appendChild(style);
-
         function goBack() {
             if (document.referrer.includes('index.html')) {
                 history.back();
@@ -594,6 +567,4 @@
     </script>
 </body>
 
-
 </html>
-
