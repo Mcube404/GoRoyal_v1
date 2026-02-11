@@ -179,8 +179,8 @@
             /* Lighter bg */
             border: none;
             color: var(--text-secondary);
-            padding: 12px 32px;
-            /* Larger hit area */
+            padding: 12px 24px;
+            /* Standard pill padding */
             border-radius: 40px;
             font-size: 1rem;
             font-weight: 500;
@@ -190,6 +190,7 @@
             gap: 10px;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             overflow: hidden;
+            white-space: nowrap;
         }
 
         .tab-btn.active {
@@ -201,8 +202,23 @@
             transform: scale(1.05);
         }
 
-        /* Optional: Add a bottom bar indicator instead? User asked for "effect to the option in the top" */
-        /* Let's stick to the pill nicely resizing and recoloring */
+        /* Specific style for Variant Buttons (Laptops, etc) */
+        .variant-btn {
+            border: 1px solid var(--glass-border);
+            background: rgba(0, 0, 0, 0.3);
+            /* Darker, distinct background */
+            font-size: 0.9rem;
+            /* Slightly smaller text */
+            padding: 10px 20px;
+        }
+
+        .variant-btn.active {
+            background: #fff;
+            /* Distinct active state for variants? Or keep accent? User said round button showing option */
+            /* Let's keep accent for consistency but maybe different shape? */
+            background: var(--accent);
+            color: #000;
+        }
 
         /* Swiper Container */
         .swiper {
@@ -396,12 +412,7 @@
 
         <!-- Tabs Control -->
         <div class="tabs-container" id="tabsHolder">
-            <button class="tab-btn active" onclick="slideTo(0)" id="tab-0">
-                <i class="ri-shield-star-line"></i> Sponsored
-            </button>
-            <button class="tab-btn" onclick="slideTo(1)" id="tab-1">
-                <i class="ri-star-smile-line"></i> Top Rated
-            </button>
+            <!-- Dynamic Tabs loaded here -->
         </div>
 
         <!-- Swiper Container -->
@@ -438,21 +449,94 @@
         document.getElementById('pageTitle').textContent = sub || 'Products';
         document.title = `${sub || 'Products'} - Go Royal`;
 
-        // Initialize with default color
-        updateThemeColor(0);
+        // Configuration for Variants
+        const variantConfig = {
+            'Laptop': [
+                { key: 'professional', label: 'Professional' },
+                { key: 'gaming', label: 'Gaming' },
+                { key: 'touch', label: 'Touch' }
+            ],
+            'Speaker': [
+                { key: 'home-theater', label: 'Home Theater' },
+                { key: 'soundbar', label: 'Sound Bar' }
+            ]
+            // Add other categories here if needed
+        };
 
-        renderProducts(sub, img);
-
+        let currentVariant = null;
+        let hasVariants = false;
         var swiper;
 
-        function renderProducts(sub, subImg) {
+        // Initialize Page
+        initPage();
+
+        function initPage() {
+            // Check for variants
+            if (variantConfig[sub]) {
+                hasVariants = true;
+                currentVariant = variantConfig[sub][0].key; // Default to first
+                renderVariantTabs(variantConfig[sub]);
+            } else {
+                hasVariants = false;
+                renderDefaultTabs();
+            }
+
+            // Initialize with default color
+            updateThemeColor(0);
+            renderProducts(sub, img, currentVariant);
+        }
+
+        function renderVariantTabs(variants) {
+            const container = document.getElementById('tabsHolder');
+            let html = '';
+            variants.forEach(v => {
+                html += `
+                <button class="tab-btn variant-btn ${v.key === currentVariant ? 'active' : ''}" onclick="switchVariant('${v.key}')" id="btn-${v.key}">
+                    ${v.label}
+                </button>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function renderDefaultTabs() {
+            const container = document.getElementById('tabsHolder');
+            container.innerHTML = `
+                <button class="tab-btn active" onclick="slideTo(0)" id="tab-0">
+                    <i class="ri-shield-star-line"></i> Sponsored
+                </button>
+                <button class="tab-btn" onclick="slideTo(1)" id="tab-1">
+                    <i class="ri-star-smile-line"></i> Top Rated
+                </button>
+            `;
+        }
+
+        function switchVariant(key) {
+            if (currentVariant === key) return;
+            currentVariant = key;
+
+            // Update active state
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${key}`).classList.add('active');
+
+            // Re-render products
+            renderProducts(sub, img, currentVariant);
+        }
+
+        function renderProducts(sub, subImg, variantKey) {
             const holder = document.getElementById('productsHolder');
+
+            let displayName = sub;
+            if (variantKey) {
+                // capitalize
+                const vLabel = variantKey.charAt(0).toUpperCase() + variantKey.slice(1);
+                displayName = `${vLabel} ${sub}`;
+            }
 
             // STRICTLY 2 Products Data
             // User can replace the '#' with their actual affiliate/product links later
             const rawProducts = [
-                { id: 0, type: 'sponsored', label: 'Sponsored', name: `${sub} - Premium`, desc: 'Highest Quality • Verified', link: '#' },
-                { id: 1, type: 'top-rated', label: 'Top Rated', name: `${sub} - Best Seller`, desc: 'Most Loved • 5 Star', link: '#' }
+                { id: 0, type: 'sponsored', label: 'Sponsored', name: `${displayName} - Premium`, desc: 'Highest Quality • Verified', link: '#' },
+                { id: 1, type: 'top-rated', label: 'Top Rated', name: `${displayName} - Best Seller`, desc: 'Most Loved • 5 Star', link: '#' }
             ];
 
             // STRICTLY 2 Products - No Duplicates, No Loop
@@ -460,7 +544,6 @@
 
             let html = '';
             displayProducts.forEach((p, i) => {
-                // Ensure the data-real-index is correct (0 or 1)
                 html += `
                 <div class="swiper-slide" data-real-index="${p.id}">
                     <div class="slide-image" style="background-image: url('${subImg}');">
@@ -483,6 +566,10 @@
             });
             holder.innerHTML = html;
 
+            // Re-init swiper if it exists, or create new
+            if (swiper) {
+                swiper.destroy(true, true);
+            }
             initSwiper();
         }
 
@@ -516,8 +603,14 @@
                 },
                 on: {
                     slideChange: function () {
-                        // Standard slideChange is fine for non-loop
-                        updateActiveTab(this.activeIndex);
+                        // Standard slideChange
+
+                        // IF we are in "Default Mode" (no variants), we update the tabs based on slide
+                        if (!hasVariants) {
+                            updateActiveTab(this.activeIndex);
+                        }
+
+                        // Always update theme color based on product index (0=Sponsored, 1=TopRated)
                         updateThemeColor(this.activeIndex);
                     }
                 }
